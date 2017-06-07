@@ -32,12 +32,24 @@ public class MessageControllerTests {
 	public void setup() {
 		this.mockMvc = MockMvcBuilders.standaloneSetup(new MessageController()).build();
 	}
-
+	
 	@Test
-	public void demoTest() throws Exception {
-		mockMvc.perform(get("/demo/hello")).andExpect(status().isOk())
+	public void demoTestSetup() throws Exception {
+		mockMvc.perform(get("/demo/")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void demoTestA() throws Exception {
+		mockMvc.perform(get("/demo/1")).andExpect(status().isOk())
 		.andExpect(content().contentType(contentType))
 		.andExpect(jsonPath("text", is("hi")));
+	}
+
+	@Test
+	public void demoTestB() throws Exception {
+		mockMvc.perform(get("/demo/hello")).andExpect(status().isOk())
+		.andExpect(content().contentType(contentType))
+		.andExpect(jsonPath("text", is("hello")));
 	}
 
 }
