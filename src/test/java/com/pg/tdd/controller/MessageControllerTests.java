@@ -37,7 +37,7 @@ public class MessageControllerTests {
 	public void demoTest() throws Exception {
 		mockMvc.perform(get("/demo/hello")).andExpect(status().isOk())
 		.andExpect(content().contentType(contentType))
-		.andExpect(jsonPath("text", is("hi")));
+		.andExpect(jsonPath("text", is("hello")));
 	}
 
 }
