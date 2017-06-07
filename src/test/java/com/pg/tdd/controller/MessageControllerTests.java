@@ -34,19 +34,24 @@ public class MessageControllerTests {
 	}
 	
 	@Test
-	public void demoTestSetup() throws Exception {
+	public void demoTestA() throws Exception {
 		mockMvc.perform(get("/demo/")).andExpect(status().isOk());
 	}
 	
 	@Test
-	public void demoTestA() throws Exception {
+	public void demoTestB() throws Exception {
+		mockMvc.perform(get("/demo/")).andExpect(status().isNotFound());
+	}
+	
+	@Test
+	public void demoTestC() throws Exception {
 		mockMvc.perform(get("/demo/1")).andExpect(status().isOk())
 		.andExpect(content().contentType(contentType))
 		.andExpect(jsonPath("text", is("hi")));
 	}
 
 	@Test
-	public void demoTestB() throws Exception {
+	public void demoTestD() throws Exception {
 		mockMvc.perform(get("/demo/hello")).andExpect(status().isOk())
 		.andExpect(content().contentType(contentType))
 		.andExpect(jsonPath("text", is("hello")));
